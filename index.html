@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LRC · נשמח להמשיך לדבר</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700&family=Rubik:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Layout: one centered column (max 600px). Dark "evening" hero like an engraved invitation card, then cream sections: the evening, the program, registration. */
+:root{
+  --night:#16151E; --night-2:#211F2C; --plum:#5C5878; --plum-2:#726C98;
+  --gold:#C9AD78; --gold-soft:#E6D6B3; --gold-ink:#8C6F3E;
+  --paper:#F5F1EA; --card:#FFFFFF; --ink:#262433; --muted:#6A6577; --line:#E3DCCF; --err:#A8321F;
+  --serif:'Frank Ruhl Libre','David Libre',Georgia,serif; --sans:'Rubik',Arial,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{margin:0}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.col{max-width:600px;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px))}
+
+/* hero */
+.hero{background:radial-gradient(120% 80% at 50% 0%, #2A2738 0%, var(--night) 62%);color:#F3EEE6;padding-block:28px 46px;position:relative;overflow:hidden}
+.frame{border:1px solid rgba(201,173,120,.55);padding:34px 22px 38px;position:relative;text-align:center}
+.frame::before{content:"";position:absolute;inset:6px;border:1px solid rgba(201,173,120,.22);pointer-events:none}
+.logo{display:inline-flex;align-items:center;gap:9px;direction:ltr}
+.logo svg{width:30px;height:auto}
+.logo .w{display:flex;flex-direction:column;text-align:left;line-height:1}
+.logo b{font-weight:600;font-size:27px;letter-spacing:.5px;color:#fff}
+.logo small{font-weight:300;font-size:8.5px;letter-spacing:1.6px;color:var(--gold);margin-top:4px}
+.kicker{margin-top:26px;font-size:13px;letter-spacing:1.5px;color:var(--gold)}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(34px,9.4vw,50px);line-height:1.12;margin:14px 0 0;text-wrap:balance;color:#fff}
+h1 em{font-style:normal;color:var(--gold-soft)}
+.sub{margin:16px auto 0;max-width:30ch;color:#CFC8D8;font-size:16.5px;font-weight:300}
+.facts{margin:28px auto 0;display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:center;max-width:430px}
+.fact{display:flex;flex-direction:column;gap:2px}
+.fact .k{font-size:11px;letter-spacing:2px;color:var(--gold)}
+.fact .v{font-family:var(--serif);font-size:20px;color:#fff;white-space:nowrap}
+.sep{width:1px;height:34px;background:rgba(201,173,120,.45)}
+.cta{display:inline-block;margin-top:30px;background:var(--gold);color:var(--night);text-decoration:none;font-weight:600;font-size:17px;padding:14px 34px;border-radius:999px;transition:background .2s}
+.cta:hover,.cta:focus-visible{background:var(--gold-soft)}
+.cta:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.scarce{margin-top:12px;font-size:13px;color:#A9A2B5}
+
+/* sections */
+section{padding-block:44px 8px}
+.eyebrow{font-size:13px;letter-spacing:1.2px;color:var(--gold-ink);font-weight:500}
+h2{font-family:var(--serif);font-weight:500;font-size:clamp(27px,7vw,34px);line-height:1.2;margin:6px 0 14px;text-wrap:balance}
+.lead{margin:0;color:#3E3A4B;font-size:17px}
+.lead+.lead{margin-top:12px}
+.perks{list-style:none;padding:0;margin:26px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.perk{background:var(--card);border:1px solid var(--line);padding:16px 16px 15px}
+.perk b{display:block;font-family:var(--serif);font-weight:500;font-size:19px;line-height:1.25}
+.perk:last-child:nth-child(odd){grid-column:1/-1}
+.perk span{display:block;font-size:14px;color:var(--muted);margin-top:4px}
+
+.prog{list-style:none;padding:0;margin:6px 0 0;border-top:1px solid var(--line)}
+.prog li{display:grid;grid-template-columns:64px 1fr;gap:14px;padding:15px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.prog time{font-family:var(--serif);font-size:20px;color:var(--gold-ink);font-variant-numeric:tabular-nums;direction:ltr;text-align:right}
+.prog .t{font-weight:500;font-size:17px}
+.prog .d{font-size:14.5px;color:var(--muted)}
+.prog li.key .t{font-family:var(--serif);font-size:20px;font-weight:500}
+
+
+.spk{list-style:none;padding:0;margin:8px 0 0;display:flex;flex-direction:column;gap:14px}
+.spk li{display:grid;grid-template-columns:92px 1fr;gap:16px;align-items:center;background:var(--card);border:1px solid var(--line);padding:12px}
+.spk img{width:92px;height:92px;object-fit:cover;display:block;outline:1px solid var(--gold);outline-offset:3px}
+.spk b{display:block;font-family:var(--serif);font-weight:500;font-size:21px;line-height:1.2}
+.spk i{display:block;font-style:normal;font-family:var(--serif);font-size:16.5px;line-height:1.4;color:var(--gold-ink);margin-top:7px}
+.spk span{display:block;font-size:14.5px;color:var(--muted);margin-top:3px;line-height:1.45}
+/* form */
+.reg{padding-block:46px 30px}
+.card{background:var(--card);border-top:3px solid var(--gold);padding:26px 20px 26px;box-shadow:0 1px 0 var(--line)}
+form{display:flex;flex-direction:column;gap:16px;margin-top:18px}
+.field{display:flex;flex-direction:column;gap:6px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+label,.legend{font-weight:500;font-size:15px}
+.opt{font-weight:300;color:var(--muted);font-size:13px}
+input[type=text],input[type=tel],input[type=email]{font:inherit;font-size:17px;padding:12px 13px;border:1.5px solid #D6CFC2;background:#FCFBF8;border-radius:0;color:var(--ink);width:100%;min-width:0}
+input:focus{outline:none;border-color:var(--plum);background:#fff;box-shadow:0 0 0 3px rgba(92,88,120,.15)}
+.help{font-size:13px;color:var(--muted)}
+.err{font-size:13px;color:var(--err)}
+.bad input{border-color:var(--err)}
+.choice{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.choice input{position:absolute;opacity:0;pointer-events:none}
+.choice label{display:flex;align-items:center;justify-content:center;gap:8px;border:1.5px solid #D6CFC2;padding:13px;font-weight:500;cursor:pointer;background:#FCFBF8;transition:all .15s}
+.choice input:checked+label{border-color:var(--plum);background:var(--plum);color:#fff}
+.choice input:focus-visible+label{box-shadow:0 0 0 3px rgba(92,88,120,.3)}
+.plus{border-inline-start:3px solid var(--gold);padding-inline-start:14px;display:flex;flex-direction:column;gap:14px;animation:open .25s ease}
+@keyframes open{from{opacity:.4;transform:translateY(-4px)}to{opacity:1;transform:none}}
+button[type=submit]{font:inherit;font-weight:600;font-size:18px;background:var(--night);color:#fff;border:0;padding:16px;cursor:pointer;margin-top:4px;transition:background .2s}
+button[type=submit]:hover{background:var(--plum)}
+button[type=submit]:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+button[disabled]{opacity:.6;cursor:wait}
+.fine{font-size:12.5px;color:var(--muted);text-align:center;margin:0}
+.formerr{background:#FBEDEA;color:var(--err);padding:10px 12px;font-size:14px}
+
+/* thanks */
+.thanks{text-align:center;padding:34px 20px 30px}
+.thanks .glass{width:46px;height:auto}
+.thanks h2{margin-top:12px}
+.thanks p{margin:0 auto;max-width:34ch;color:#3E3A4B}
+.acts{display:flex;flex-direction:column;gap:10px;margin-top:22px}
+.btn{display:block;text-decoration:none;font-weight:500;padding:13px;border:1.5px solid var(--ink);color:var(--ink)}
+.btn.gold{background:var(--gold);border-color:var(--gold);color:var(--night);font-weight:600}
+.friend{margin-top:24px;background:var(--paper);padding:18px 16px;text-align:center}
+.friend b{font-family:var(--serif);font-size:20px;font-weight:500}
+.friend p{font-size:14.5px;margin:6px auto 12px}
+
+footer{padding-block:30px 40px;text-align:center;color:var(--muted);font-size:13px}
+footer .tag{font-family:var(--serif);font-size:19px;color:var(--plum)}
+@media (max-width:420px){.perks{grid-template-columns:1fr}.row2{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips input{position:absolute;opacity:0;pointer-events:none}
+.chips label{border:1.5px solid #D6CFC2;background:#FCFBF8;padding:9px 14px;font-weight:400;font-size:15px;cursor:pointer;transition:all .15s}
+.chips input:checked+label{background:var(--plum);border-color:var(--plum);color:#fff}
+.chips input:focus-visible+label{box-shadow:0 0 0 3px rgba(92,88,120,.3)}
+.chips.feat label{width:100%;padding:13px 14px;font-weight:500}
+textarea{font:inherit;font-size:16px;padding:12px 13px;border:1.5px solid #D6CFC2;background:#FCFBF8;border-radius:0;color:var(--ink);width:100%;min-height:84px;resize:vertical}
+textarea:focus{outline:none;border-color:var(--plum);background:#fff;box-shadow:0 0 0 3px rgba(92,88,120,.15)}
+.hero.short{padding-block:22px 34px}
+.hero.short h1{font-size:clamp(30px,8.4vw,44px)}
+</style>
+</head>
+<body>
+<header class="hero short">
+  <div class="col">
+    <div class="frame">
+      <div class="logo" aria-label="LRC Long Range Capital">
+        <svg viewBox="170 60 240 275" aria-hidden="true"><path fill="#C9AD78" d="M300,70 C 300,150 330,220 395,265 C 405,190 380,110 300,70 Z"/><path fill="#E6D6B3" d="M175,240 C 260,215 340,245 380,305 C 300,335 220,310 175,240 Z"/></svg>
+        <div class="w"><b>LRC</b><small>LONG RANGE CAPITAL</small></div>
+      </div>
+      <div class="kicker">תודה שהגעת</div>
+      <h1>נשמח להמשיך<br><em>את השיחה.</em></h1>
+      <p class="sub">משאירים פרטים, ומישהו מהצוות יחזור אליך לשיחה אישית, בלי התחייבות.</p>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="col reg" style="padding-top:28px">
+    <div class="card" id="formCard">
+      <form id="f" novalidate>
+        <div class="field" id="w_name">
+          <label for="full_name">שם מלא</label>
+          <input type="text" id="full_name" autocomplete="name" required>
+          <div class="err" hidden>נא למלא שם</div>
+        </div>
+        <div class="row2">
+          <div class="field" id="w_phone">
+            <label for="phone">טלפון נייד</label>
+            <input type="tel" id="phone" inputmode="tel" autocomplete="tel" dir="ltr" style="text-align:right" required>
+            <div class="err" hidden>מספר נייד לא תקין</div>
+          </div>
+          <div class="field" id="w_email">
+            <label for="email">אימייל <span class="opt">(לא חובה)</span></label>
+            <input type="email" id="email" autocomplete="email" dir="ltr" style="text-align:right">
+            <div class="err" hidden>כתובת מייל לא תקינה</div>
+          </div>
+        </div>
+        <div class="field">
+          <span class="legend">מה הכי מעניין אותך?</span>
+          <div class="chips feat"><input type="checkbox" id="i0" value="תוכנית כלכלית אישית"><label for="i0">תוכנית כלכלית אישית, התמונה המלאה</label></div>
+          <div class="help">או בנפרד:</div>
+          <div class="chips" id="chips">
+            <input type="checkbox" id="i1" value="שוק ההון"><label for="i1">שוק ההון</label>
+            <input type="checkbox" id="i2" value="פנסיה וחסכונות"><label for="i2">פנסיה וחסכונות</label>
+            <input type="checkbox" id="i3" value="נדל״ן בישראל"><label for="i3">נדל״ן בישראל</label>
+            <input type="checkbox" id="i4" value="נדל״ן בקפריסין"><label for="i4">נדל״ן בקפריסין</label>
+            <input type="checkbox" id="i5" value="קרקעות"><label for="i5">קרקעות</label>
+            <input type="checkbox" id="i6" value="משכנתא ומימון"><label for="i6">משכנתא ומימון</label>
+          </div>
+        </div>
+        <div class="field">
+          <span class="legend" id="whenLbl">מתי הכי נוח שנחזור אליך?</span>
+          <div class="chips" role="radiogroup" aria-labelledby="whenLbl">
+            <input type="radio" name="when" id="w1" value="בוקר"><label for="w1">בוקר</label>
+            <input type="radio" name="when" id="w2" value="צהריים"><label for="w2">צהריים</label>
+            <input type="radio" name="when" id="w3" value="ערב"><label for="w3">ערב</label>
+          </div>
+        </div>
+        <div class="field">
+          <label for="note">משהו שחשוב לך שנדע? <span class="opt">(לא חובה)</span></label>
+          <textarea id="note" maxlength="500"></textarea>
+        </div>
+        <div class="formerr" id="formErr" hidden></div>
+        <button type="submit" id="go">שלחו, ונדבר</button>
+        <p class="fine">הפרטים נשמרים אצל LRC בלבד, כדי לחזור אליך.</p>
+      </form>
+    </div>
+
+    <div class="card thanks" id="thanks" hidden>
+      <svg class="glass" viewBox="0 0 48 64" aria-hidden="true"><path d="M10 4h28c0 14-4 24-14 26C14 28 10 18 10 4z" fill="none" stroke="#C9AD78" stroke-width="2"/><path d="M12.5 14h23c-1 8-4.5 13-11.5 14-7-1-10.5-6-11.5-14z" fill="#5C5878"/><path d="M24 30v24M14 58h20" stroke="#C9AD78" stroke-width="2" stroke-linecap="round"/></svg>
+      <div class="eyebrow">קיבלנו</div>
+      <h2 id="tTitle">תודה!</h2>
+      <p>נחזור אליך בקרוב. בינתיים, תמשיכו ליהנות מהערב.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="col">
+  <div class="tag">הנדסת עושר</div>
+  <div>LRC · Long Range Capital · office@lrc.co.il</div>
+</footer>
+
+<script>
+var API = 'https://script.google.com/macros/s/AKfycbztbhk3SdXdAMg2FH3XzDy31uJCX5M5ZHO1Q1BmmPXXaE3uNX2lu3usv7Ir0-8Dc8p6ag/exec';
+var $ = function(id){ return document.getElementById(id); };
+function setBad(id, bad){ var w = $(id); w.classList.toggle('bad', bad); w.querySelector('.err').hidden = !bad; }
+function cleanPhone(p){ p = String(p).replace(/[^\d+]/g,''); if (p.indexOf('+972') === 0) p = '0' + p.slice(4); return p.replace(/\D/g,''); }
+$('f').addEventListener('submit', function(ev){
+  ev.preventDefault();
+  var interests = Array.prototype.map.call(document.querySelectorAll('input[type=checkbox]:checked'), function(x){ return x.value; });
+  var w = document.querySelector('input[name=when]:checked');
+  var d = { type: 'lead', full_name: $('full_name').value.trim(), phone: cleanPhone($('phone').value), email: $('email').value.trim(), interests: interests, when: w ? w.value : '', note: $('note').value.trim() };
+  var ok = true, first = null;
+  function chk(id, bad, inp){ setBad(id, bad); if (bad){ ok = false; first = first || inp; } }
+  chk('w_name', d.full_name.length < 2, 'full_name');
+  chk('w_phone', !/^05\d{8}$/.test(d.phone), 'phone');
+  chk('w_email', d.email !== '' && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(d.email), 'email');
+  if (!ok){ $(first).focus(); return; }
+  var btn = $('go'); btn.disabled = true; btn.textContent = 'שולחים...'; $('formErr').hidden = true;
+  fetch(API, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(d), redirect: 'follow' })
+    .then(function(r){ return r.json(); })
+    .then(function(res){
+      if (!res || res.status !== 'ok') throw new Error('x');
+      $('tTitle').textContent = 'תודה, ' + d.full_name.split(/\s+/)[0] + '!';
+      $('formCard').hidden = true; $('thanks').hidden = false; window.scrollTo({ top: 0, behavior: 'smooth' });
+    })
+    .catch(function(){
+      btn.disabled = false; btn.textContent = 'שלחו, ונדבר';
+      $('formErr').textContent = 'משהו לא עבר. נסו שוב, או פנו לאחד מאיתנו כאן בערב.'; $('formErr').hidden = false;
+    });
+});
+</script>
+</body>
+</html>
