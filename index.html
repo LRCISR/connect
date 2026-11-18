@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>LRC · נשמח להמשיך לדבר</title>
+<title>LRC · ממשיכים את השיחה</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700&family=Rubik:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -134,9 +134,9 @@ textarea:focus{outline:none;border-color:var(--plum);background:#fff;box-shadow:
         <svg viewBox="170 60 240 275" aria-hidden="true"><path fill="#C9AD78" d="M300,70 C 300,150 330,220 395,265 C 405,190 380,110 300,70 Z"/><path fill="#E6D6B3" d="M175,240 C 260,215 340,245 380,305 C 300,335 220,310 175,240 Z"/></svg>
         <div class="w"><b>LRC</b><small>LONG RANGE CAPITAL</small></div>
       </div>
-      <div class="kicker">תודה שהגעת</div>
-      <h1>נשמח להמשיך<br><em>את השיחה.</em></h1>
-      <p class="sub">משאירים פרטים, ומישהו מהצוות יחזור אליך לשיחה אישית, בלי התחייבות.</p>
+      <div class="kicker">היה כיף? גם לנו.</div>
+      <h1>היין ייגמר.<br><em>השיחה לא חייבת.</em></h1>
+      <p class="sub">משאירים פרטים, ונחזור אליך לשיחה אישית על הכסף שלך. בלי ז׳רגון ובלי התחייבות.</p>
     </div>
   </div>
 </header>
@@ -146,26 +146,26 @@ textarea:focus{outline:none;border-color:var(--plum);background:#fff;box-shadow:
     <div class="card" id="formCard">
       <form id="f" novalidate>
         <div class="field" id="w_name">
-          <label for="full_name">שם מלא</label>
+          <label for="full_name">איך קוראים לך?</label>
           <input type="text" id="full_name" autocomplete="name" required>
           <div class="err" hidden>נא למלא שם</div>
         </div>
         <div class="row2">
           <div class="field" id="w_phone">
-            <label for="phone">טלפון נייד</label>
+            <label for="phone">לאן להתקשר?</label>
             <input type="tel" id="phone" inputmode="tel" autocomplete="tel" dir="ltr" style="text-align:right" required>
             <div class="err" hidden>מספר נייד לא תקין</div>
           </div>
           <div class="field" id="w_email">
-            <label for="email">אימייל <span class="opt">(לא חובה)</span></label>
+            <label for="email">ומייל, אם בא לך <span class="opt">(לא חובה)</span></label>
             <input type="email" id="email" autocomplete="email" dir="ltr" style="text-align:right">
             <div class="err" hidden>כתובת מייל לא תקינה</div>
           </div>
         </div>
         <div class="field">
-          <span class="legend">מה הכי מעניין אותך?</span>
-          <div class="chips feat"><input type="checkbox" id="i0" value="תוכנית כלכלית אישית"><label for="i0">תוכנית כלכלית אישית, התמונה המלאה</label></div>
-          <div class="help">או בנפרד:</div>
+          <span class="legend">על מה הכי בא לך לדבר?</span>
+          <div class="chips feat"><input type="checkbox" id="i0" value="תוכנית כלכלית אישית"><label for="i0">על הכול: תוכנית כלכלית אישית</label></div>
+          <div class="help">או רק על:</div>
           <div class="chips" id="chips">
             <input type="checkbox" id="i1" value="שוק ההון"><label for="i1">שוק ההון</label>
             <input type="checkbox" id="i2" value="פנסיה וחסכונות"><label for="i2">פנסיה וחסכונות</label>
@@ -176,28 +176,28 @@ textarea:focus{outline:none;border-color:var(--plum);background:#fff;box-shadow:
           </div>
         </div>
         <div class="field">
-          <span class="legend" id="whenLbl">מתי הכי נוח שנחזור אליך?</span>
+          <span class="legend" id="whenLbl">מתי הכי נוח לשמוע מאיתנו?</span>
           <div class="chips" role="radiogroup" aria-labelledby="whenLbl">
-            <input type="radio" name="when" id="w1" value="בוקר"><label for="w1">בוקר</label>
-            <input type="radio" name="when" id="w2" value="צהריים"><label for="w2">צהריים</label>
-            <input type="radio" name="when" id="w3" value="ערב"><label for="w3">ערב</label>
+            <input type="radio" name="when" id="w1" value="בוקר"><label for="w1">בוקר, עם הקפה</label>
+            <input type="radio" name="when" id="w2" value="צהריים"><label for="w2">בצהריים</label>
+            <input type="radio" name="when" id="w3" value="ערב"><label for="w3">בערב, כשהבית נרגע</label>
           </div>
         </div>
         <div class="field">
-          <label for="note">משהו שחשוב לך שנדע? <span class="opt">(לא חובה)</span></label>
-          <textarea id="note" maxlength="500"></textarea>
+          <label for="note">משהו שכדאי שנדע לפני השיחה? <span class="opt">(לא חובה)</span></label>
+          <textarea id="note" maxlength="500" placeholder="למשל: יש לנו דירה להשקעה ולא בטוחים מה הצעד הבא"></textarea>
         </div>
         <div class="formerr" id="formErr" hidden></div>
-        <button type="submit" id="go">שלחו, ונדבר</button>
-        <p class="fine">הפרטים נשמרים אצל LRC בלבד, כדי לחזור אליך.</p>
+        <button type="submit" id="go">יאללה, דברו איתי</button>
+        <p class="fine">הפרטים נשארים אצל LRC בלבד. בלי ספאם, רק שיחה אחת טובה.</p>
       </form>
     </div>
 
     <div class="card thanks" id="thanks" hidden>
       <svg class="glass" viewBox="0 0 48 64" aria-hidden="true"><path d="M10 4h28c0 14-4 24-14 26C14 28 10 18 10 4z" fill="none" stroke="#C9AD78" stroke-width="2"/><path d="M12.5 14h23c-1 8-4.5 13-11.5 14-7-1-10.5-6-11.5-14z" fill="#5C5878"/><path d="M24 30v24M14 58h20" stroke="#C9AD78" stroke-width="2" stroke-linecap="round"/></svg>
-      <div class="eyebrow">קיבלנו</div>
+      <div class="eyebrow">רשמנו</div>
       <h2 id="tTitle">תודה!</h2>
-      <p>נחזור אליך בקרוב. בינתיים, תמשיכו ליהנות מהערב.</p>
+      <p>נחזור אליך בקרוב. בינתיים, יש עוד יין על השולחן 🍷</p>
     </div>
   </section>
 </main>
@@ -232,7 +232,7 @@ $('f').addEventListener('submit', function(ev){
       $('formCard').hidden = true; $('thanks').hidden = false; window.scrollTo({ top: 0, behavior: 'smooth' });
     })
     .catch(function(){
-      btn.disabled = false; btn.textContent = 'שלחו, ונדבר';
+      btn.disabled = false; btn.textContent = 'יאללה, דברו איתי';
       $('formErr').textContent = 'משהו לא עבר. נסו שוב, או פנו לאחד מאיתנו כאן בערב.'; $('formErr').hidden = false;
     });
 });
