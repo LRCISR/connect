@@ -136,7 +136,7 @@ textarea:focus{outline:none;border-color:var(--plum);background:#fff;box-shadow:
       </div>
       <div class="kicker">היה כיף? גם לנו.</div>
       <h1>היין ייגמר.<br><em>השיחה לא חייבת.</em></h1>
-      <p class="sub">משאירים פרטים, ונחזור אליך לשיחה אישית על הכסף שלך. בלי ז׳רגון ובלי התחייבות.</p>
+      <p class="sub">משאירים פרטים, ונחזור אליך לשיחה אישית על הכסף שלך, בלי התחייבות.</p>
     </div>
   </div>
 </header>
@@ -157,9 +157,9 @@ textarea:focus{outline:none;border-color:var(--plum);background:#fff;box-shadow:
             <div class="err" hidden>מספר נייד לא תקין</div>
           </div>
           <div class="field" id="w_email">
-            <label for="email">ומייל, אם בא לך <span class="opt">(לא חובה)</span></label>
-            <input type="email" id="email" autocomplete="email" dir="ltr" style="text-align:right">
-            <div class="err" hidden>כתובת מייל לא תקינה</div>
+            <label for="email">ולאן לשלוח מייל?</label>
+            <input type="email" id="email" autocomplete="email" dir="ltr" style="text-align:right" required>
+            <div class="err" hidden>נא למלא כתובת מייל תקינה</div>
           </div>
         </div>
         <div class="field">
@@ -221,7 +221,7 @@ $('f').addEventListener('submit', function(ev){
   function chk(id, bad, inp){ setBad(id, bad); if (bad){ ok = false; first = first || inp; } }
   chk('w_name', d.full_name.length < 2, 'full_name');
   chk('w_phone', !/^05\d{8}$/.test(d.phone), 'phone');
-  chk('w_email', d.email !== '' && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(d.email), 'email');
+  chk('w_email', !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(d.email), 'email');
   if (!ok){ $(first).focus(); return; }
   var btn = $('go'); btn.disabled = true; btn.textContent = 'שולחים...'; $('formErr').hidden = true;
   fetch(API, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(d), redirect: 'follow' })
